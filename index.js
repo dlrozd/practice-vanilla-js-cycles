@@ -1,4 +1,9 @@
-const scores = [54, 22, 32, 11, 33, 44, 22, 26, 74, 92, 90, 84, 43, 67, 92, 90]
+const scores = [
+    54, 22, 32, 11, 33,
+    44, 22, 26, 74, 92,
+    90, 84, 43, 67, 92,
+    90, 53, 33, 11, 23
+]
 
 // cycle while
 
@@ -15,32 +20,33 @@ const scores = [54, 22, 32, 11, 33, 44, 22, 26, 74, 92, 90, 84, 43, 67, 92, 90]
 
 // cycle for
 
-// let result;
 
-// for (let i = 0; i < scores.length; i++) {
-//     result = 'you have' + ' ' + i + ' ' + 'and score' + ' ' + scores[i];
-//     console.log(result);
-// }
-//
-// console.log('all scores: ' + scores.length)
+const bestScore = printAndGetHighScore(scores);
+const bestScores = getBestScores(scores, bestScore);
 
-let highScore = 0;
-
-for (let i = 0; i < scores.length; i++) {
-    if (highScore < scores[i]) {
-        highScore = scores[i];
+function getBestScores(array, value) {
+    let bestScores = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            bestScores.push(i);
+        }
     }
+    return bestScores;
+}
+function printAndGetHighScore(array) {
+    let result;
+    let highScore = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        result = 'Index' + ' ' + i + ' ' + 'and score' + ' ' + array[i];
+        if (highScore < array[i]) {
+            highScore = array[i];
+        }
+        console.log(result);
+    }
+    return highScore;
 }
 
-console.log('Highest score from data: ' + highScore)
-
-let bestScores = [];
-
-for (let i = 0; i < scores.length; i++) {
-    if (scores[i] === highScore) {
-        bestScores.push(i);
-    }
-}
-
-console.log('Best scores of index' + ' ' + bestScores + ' ' + 'are' + ' ' + 'number' + ' ' + highScore)
-console.log('From all indexes:' + ' ' + scores.length)
+console.log('All scores: ' + scores.length)
+console.log('Highest score from data: ' + bestScore)
+console.log('Best scores of indexes' + ' ' + bestScores + ' ' + 'are' + ' ' + 'number' + ' ' + bestScore)
