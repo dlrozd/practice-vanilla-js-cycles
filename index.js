@@ -1,4 +1,4 @@
-const scores = [54, 22, 32, 11, 33, 44, 22, 26, 74, 92, 90, 84, 43, 67]
+const scores = [54, 22, 32, 11, 33, 44, 22, 26, 74, 92, 90, 84, 43, 67, 92, 90]
 
 // cycle while
 
@@ -17,9 +17,30 @@ const scores = [54, 22, 32, 11, 33, 44, 22, 26, 74, 92, 90, 84, 43, 67]
 
 // let result;
 
+// for (let i = 0; i < scores.length; i++) {
+//     result = 'you have' + ' ' + i + ' ' + 'and score' + ' ' + scores[i];
+//     console.log(result);
+// }
+//
+// console.log('all scores: ' + scores.length)
+
+let highScore = 0;
+
 for (let i = 0; i < scores.length; i++) {
-    result = 'you have' + ' ' + i + ' ' + 'and score' + ' ' + scores[i];
-    console.log(result);
+    if (highScore < scores[i]) {
+        highScore = scores[i];
+    }
 }
 
-console.log('all scores: ' + scores.length)
+console.log('Highest score from data: ' + highScore)
+
+let bestScores = [];
+
+for (let i = 0; i < scores.length; i++) {
+    if (scores[i] === highScore) {
+        bestScores.push(i);
+    }
+}
+
+console.log('Best scores of index' + ' ' + bestScores + ' ' + 'are' + ' ' + 'number' + ' ' + highScore)
+console.log('From all indexes:' + ' ' + scores.length)
