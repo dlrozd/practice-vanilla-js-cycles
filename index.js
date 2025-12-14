@@ -33,7 +33,7 @@ const costs = [
 
 const bestScore = printAndGetHighScore(scores);
 const bestScores = getBestScores(scores, bestScore);
-const bestIndex = getBestCostAndScore(scores, costs, bestScore);
+const bestIndex = getBestSolution(scores, costs, bestScore);
 
 
 function getBestScores(array, maxValue) {
@@ -60,19 +60,15 @@ function printAndGetHighScore(array) {
     return highScore;
 }
 
-function getBestCostAndScore(resultArray, costsArray, maxValue) {
-    let index;
-    let cost = 100;
-
-    for (let i = 0; i < resultArray.length; i++) {
-        if (resultArray[i] === maxValue) {
-            if (costsArray[i] < cost) {
-                cost = costsArray[i];
-                index = i;
-            }
-        }
+function getBestSolution(resultArray, costsArray, maxValue) {
+    let bestIndex;
+    const bestSolution = getBestScores(resultArray, maxValue)
+    if (costsArray[bestSolution[0]] === costsArray[bestSolution[1]]){
+        bestIndex = bestSolution[0];
+    } else {
+        bestIndex = bestSolution[1];
     }
-    return index
+    return bestIndex
 }
 
 
